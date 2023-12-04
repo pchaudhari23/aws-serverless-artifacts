@@ -1,0 +1,142 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "2023-11-29T05:57:24Z",
+    "title" : "Serverless Project API"
+  },
+  "host" : "f7c7p33kzg.execute-api.ap-south-1.amazonaws.com",
+  "basePath" : "/Develop",
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/task-management-serverless" : {
+      "post" : {
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "Task",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Task"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            },
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Content-Type",
+          "in" : "header",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "taskid",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            },
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      },
+      "options" : {
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            },
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "type" : "string"
+              },
+              "Access-Control-Allow-Methods" : {
+                "type" : "string"
+              },
+              "Access-Control-Allow-Headers" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/task-management-serverless/{type}" : {
+      "get" : {
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "type",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "headers" : {
+              "Access-Control-Allow-Origin" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Empty" : {
+      "type" : "object",
+      "title" : "Empty Schema"
+    },
+    "Task" : {
+      "type" : "object",
+      "required" : [ "task_description", "task_enddate", "task_priority", "task_status", "task_teamsize", "task_title" ],
+      "properties" : {
+        "task_title" : {
+          "type" : "string"
+        },
+        "task_description" : {
+          "type" : "string"
+        },
+        "task_priority" : {
+          "type" : "string"
+        },
+        "task_status" : {
+          "type" : "string"
+        },
+        "task_enddate" : {
+          "type" : "string"
+        },
+        "task_teamsize" : {
+          "type" : "integer"
+        }
+      },
+      "title" : "Task"
+    }
+  }
+}
